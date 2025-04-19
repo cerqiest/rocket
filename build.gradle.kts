@@ -21,6 +21,7 @@ plugins {
     id("org.jetbrains.dokka") version "2.0.0"
     id("com.github.johnrengelman.shadow") version "8.1.1"
     id("xyz.jpenilla.run-paper") version "2.3.1"
+    id("maven-publish")
 }
 
 group = "dev.znci"
@@ -44,6 +45,19 @@ dependencies {
     implementation("org.jetbrains.kotlin:kotlin-reflect")
 
     testImplementation("org.junit.jupiter:junit-jupiter:5.12.2")
+}
+
+publishing {
+    respositories {
+        maven {
+            name = "GithubPackages"
+            url = uri("https://maven.pkg.github.com/cerqiest/rocket")
+            credentials {
+                username = project.findProperty("gpr.user") as String? ?: System.getenv("USERNAME")
+                password = project.findProperty("gpr.token") as String? ?: System.getenv("TOKEN")
+            }
+        }
+    }
 }
 
 val targetJavaVersion = 21
