@@ -48,7 +48,7 @@ dependencies {
 }
 
 publishing {
-    respositories {
+    repositories {
         maven {
             name = "GithubPackages"
             url = uri("https://maven.pkg.github.com/cerqiest/rocket")
