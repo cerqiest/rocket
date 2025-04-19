@@ -21,7 +21,7 @@ plugins {
     id("org.jetbrains.dokka") version "2.0.0"
     id("com.github.johnrengelman.shadow") version "8.1.1"
     id("xyz.jpenilla.run-paper") version "2.3.1"
-    id("maven-publish")
+    `maven-publish`
 }
 
 group = "dev.znci"
@@ -56,6 +56,11 @@ publishing {
                 username = project.findProperty("gpr.user") as String? ?: System.getenv("USERNAME")
                 password = project.findProperty("gpr.token") as String? ?: System.getenv("TOKEN")
             }
+        }
+    }
+    publications {
+        register<MavenPublication>("gpr") {
+            from(components["java"])
         }
     }
 }
