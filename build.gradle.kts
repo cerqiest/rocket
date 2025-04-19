@@ -25,7 +25,7 @@ plugins {
 }
 
 group = "dev.znci"
-version = "1.2-SNAPSHOT"
+version = "1.1-SNAPSHOT"
 
 repositories {
     mavenCentral()
